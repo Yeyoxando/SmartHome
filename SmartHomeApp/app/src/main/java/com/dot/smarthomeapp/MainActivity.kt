@@ -6,6 +6,8 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
+import com.google.android.material.textfield.TextInputEditText
 
 class MainActivity : AppCompatActivity() {
     var mqtt: MQTTClient = MQTTClient(this)
@@ -17,6 +19,20 @@ class MainActivity : AppCompatActivity() {
 
         // Connect to MQTT broker
         mqtt.connect()
+
+        findViewById<Button>(R.id.button).setOnClickListener {
+            //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+
+            // Here it has to be the message sending
+            // Using the mqttClient
+            val topic_text = findViewById<TextInputEditText>(R.id.topicText)
+            val topic = topic_text.text.toString()
+
+            val message_text = findViewById<TextInputEditText>(R.id.messageText)
+            val message = message_text.text.toString()
+
+            mqtt.publish(topic, message)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

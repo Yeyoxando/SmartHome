@@ -11,7 +11,7 @@ import org.eclipse.paho.client.mqttv3.*
  * Overrides paho interface functions to implement what happens on each of them
  */
 class MQTTClient(context: Context?) {
-    private var serverURI = ""
+    private var serverURI = "tcp://192.168.1.37"
     private var clientID = ""
     private var mqttClient = MqttAndroidClient(context, serverURI, clientID)
 
