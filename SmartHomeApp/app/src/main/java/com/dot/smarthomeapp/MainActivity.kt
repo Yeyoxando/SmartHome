@@ -13,12 +13,13 @@ class MainActivity : AppCompatActivity() {
     var mqtt: MQTTClient = MQTTClient(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_first)
-        setSupportActionBar(findViewById(R.id.toolbar))
 
         // Connect to MQTT broker
         mqtt.connect()
+
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.fragment_first)
+        setSupportActionBar(findViewById(R.id.toolbar))
 
         findViewById<Button>(R.id.button).setOnClickListener {
             //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -33,6 +34,20 @@ class MainActivity : AppCompatActivity() {
 
             mqtt.publish(topic, message)
         }
+
+        findViewById<Button>(R.id.radioButtonOnLight1).setOnClickListener {
+            mqtt.publish("LED1", "1")
+        }
+        findViewById<Button>(R.id.radioButtonOffLight1).setOnClickListener {
+            mqtt.publish("LED1", "0")
+        }
+        findViewById<Button>(R.id.radioButtonOnLight2).setOnClickListener {
+            mqtt.publish("LED2", "1")
+        }
+        findViewById<Button>(R.id.radioButtonOffLight2).setOnClickListener {
+            mqtt.publish("LED2", "0")
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -34,10 +34,88 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:id="@+id/light_textView1"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Led 1 (Yellow)"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupLight1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOnLight1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="On" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonOffLight1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:checked="true"
+                    android:text="Off" />
+
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="63dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp">
+
+            <TextView
+                android:id="@+id/light_textView2"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Led 2 (Green)"
+                android:textSize="18sp" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupLight2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOnLight2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:text="On" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonOffLight2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:checked="true"
+                    android:text="Off" />
+
+            </RadioGroup>
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/TopicInputLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="invisible">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/topicText"
@@ -50,9 +128,10 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/MessageInputLayout"
             android:layout_width="match_parent"
-            android:layout_marginTop="10dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp">
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="invisible">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/messageText"
@@ -67,7 +146,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
-            android:text="@string/send_btn" />
+            android:text="@string/send_btn"
+            android:visibility="invisible" />
 
     </LinearLayout>
 
