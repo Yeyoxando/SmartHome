@@ -6,12 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
+    <TextView
+        android:id="@+id/TitleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="SMART HOME DEVICES"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
+        android:gravity="center_vertical"
         android:orientation="vertical"
-        android:textAlignment="center"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,26 +35,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <TextView
-            android:id="@+id/infoTextView"
+        <LinearLayout
+            android:id="@+id/Lamp1Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="200dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginBottom="20dp"
-            android:text="@string/hello_first_fragment"
-            android:textAlignment="center"
-            app:layout_constraintBottom_toTopOf="@+id/TopicInputLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:id="@+id/light_textView1"
@@ -46,8 +49,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="Led 1 (Yellow)"
-                android:textSize="18sp" />
+                android:text="Lamp 1"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/radioGroupLight1"
@@ -57,27 +62,32 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButtonOnLight1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="On" />
-
-                <RadioButton
                     android:id="@+id/radioButtonOffLight1"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:checked="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Off" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonOnLight1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="On" />
 
             </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/FlexoLampLayout"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_weight="1"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingBottom="20dp">
 
             <TextView
                 android:id="@+id/light_textView2"
@@ -85,8 +95,10 @@
                 android:layout_height="50dp"
                 android:layout_weight="1"
                 android:gravity="center_vertical"
-                android:text="Led 2 (Green)"
-                android:textSize="18sp" />
+                android:text="Flexo lamp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/radioGroupLight2"
@@ -96,58 +108,145 @@
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/radioButtonOnLight2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:text="On" />
-
-                <RadioButton
                     android:id="@+id/radioButtonOffLight2"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:checked="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
                     android:text="Off" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonOnLight2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="On" />
 
             </RadioGroup>
         </LinearLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/TopicInputLayout"
+        <LinearLayout
+            android:id="@+id/RGBLampLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="invisible">
+            android:orientation="vertical"
+            android:paddingLeft="20dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/topicText"
+            <TextView
+                android:id="@+id/light_textView3"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="RGB lamp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupLight3Mid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/topic" />
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <RadioButton
+                    android:id="@+id/radioButtonRedLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#FF0000"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Red" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/MessageInputLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
-            android:visibility="invisible">
+                <RadioButton
+                    android:id="@+id/radioButtonGreenLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#00FF00"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Green" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/messageText"
+                <RadioButton
+                    android:id="@+id/radioButtonBlueLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#0000FF"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Blue" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupLight3Bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/message" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:text="@string/send_btn"
-            android:visibility="invisible" />
+                <RadioButton
+                    android:id="@+id/radioButtonYellowLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#FFFF00"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Yellow" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonCyanLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#00FFFF"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Cyan" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonMagentaLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#FF00FF"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Magenta" />
+
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/radioGroupLight3Top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radioButtonOffLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:background="#999999"
+                    android:checked="true"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="Off" />
+
+                <RadioButton
+                    android:id="@+id/radioButtonWhiteLight3"
+                    android:layout_width="110dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="White" />
+
+            </RadioGroup>
+
+        </LinearLayout>
 
     </LinearLayout>
 
