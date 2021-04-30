@@ -7,6 +7,7 @@
 // Pin 2: Lamp
 // Pin 3: Flexo lamp
 // Pins 4, 5, 6: RGB LAMP (R, G, B)
+// Pin 7: Blind Servo
 
 SmartHomeController smart_home;
 

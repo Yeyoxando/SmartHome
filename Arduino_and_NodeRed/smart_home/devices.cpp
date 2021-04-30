@@ -49,6 +49,8 @@ int Lamp::getCurrentState(){
 }
 
 void Lamp::setCurrentState(int new_state){
+  current_state_ = (LampState)new_state;
+  
   if(new_state == kLampState_On){
     digitalWrite(digital_pin_, HIGH);
   }
@@ -91,6 +93,8 @@ int RGBLamp::getCurrentState(){
 }
 
 void RGBLamp::setCurrentState(int new_state){
+  current_state_ = (RGBLampState)new_state;
+  
   switch(new_state){
   case kRGBLampState_Off:{
     digitalWrite(digital_pin_, LOW);
@@ -155,15 +159,14 @@ void RGBLamp::setCurrentState(int new_state){
 Blind::Blind(){
   device_kind_ = kDeviceKind_Blind;
   current_state_ = kBlindState_Closed;
-  custom_angle_ = 0;
 }
 
 Blind::~Blind(){
 
 }
 
-void Blind::setDegrees(int new_degrees){
-
+void Blind::initServo(){
+  servo_.attach(digital_pin_);
 }
  
 int Blind::getCurrentState(){
@@ -171,7 +174,41 @@ int Blind::getCurrentState(){
 }
 
 void Blind::setCurrentState(int new_state){
-
+  current_state_ = (BlindState)new_state;
+  
+  switch(new_state){
+    case kBlindState_Closed:{
+      angle_ = 90;
+      break;
+    }
+    case kBlindState_20Percent:{
+      angle_ = 72;     
+      break;
+    }
+    case kBlindState_40Percent:{ 
+      angle_ = 54;   
+      break;
+    }
+    case kBlindState_60Percent:{
+      angle_ = 36;          
+      break;
+    }
+    case kBlindState_80Percent:{ 
+      angle_ = 18;         
+      break;
+    }
+    case kBlindState_Open:{
+      angle_ = 0;         
+      break;
+    }
+    default:{
+      break;
+    }
+  }
+  
+  servo_.write(angle_);
+  delay(20);
+  
 }
    
 // ----------------------------------------------------- //
@@ -199,4 +236,3 @@ void CeilingFan::setCurrentState(int new_state){
 // ----------------------------------------------------- //
    
 // ----------------------------------------------------- //
-

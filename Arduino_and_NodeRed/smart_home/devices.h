@@ -14,6 +14,10 @@
 
 // ----------------------------------------------------- //
 
+#include <Servo.h>
+
+// ----------------------------------------------------- //
+
 /// @brief
 class Device {
  public:
@@ -124,15 +128,18 @@ class Blind : public Device{
  public:
   Blind();
   ~Blind();
- 
+
   /// @brief
-  void setDegrees(int new_degrees);
- 
+  void initServo();
+  
   /// @brief
   enum BlindState{
     kBlindState_Closed = 0,
-    kBlindState_Custom = 1,
-    kBlindState_Open = 2
+    kBlindState_20Percent = 1,
+    kBlindState_40Percent = 2,
+    kBlindState_60Percent = 3,
+    kBlindState_80Percent = 4,
+    kBlindState_Open = 5
   };
  
   /// @brief
@@ -143,8 +150,8 @@ class Blind : public Device{
  protected:
   /// @brief
   BlindState current_state_;
-  /// @brief
-  int custom_angle_; // stepped in 20º
+  Servo servo_;
+  int angle_;
   
 };
 
@@ -176,4 +183,4 @@ class CeilingFan : public Device{
 
 // ----------------------------------------------------- //
 
-#endif __DEVICES_H__
+#endif //__DEVICES_H__

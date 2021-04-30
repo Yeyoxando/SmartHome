@@ -47,4 +47,4 @@ class SmartHomeController{
   
 };
 
-#endif __SMART_HOME_CONTROLLER_H__
+#endif //__SMART_HOME_CONTROLLER_H__

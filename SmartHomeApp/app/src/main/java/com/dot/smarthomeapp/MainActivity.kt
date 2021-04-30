@@ -1,14 +1,15 @@
 package com.dot.smarthomeapp
 
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.RadioButton
-import com.google.android.material.textfield.TextInputEditText
+import android.widget.SeekBar
+import android.widget.SeekBar.OnSeekBarChangeListener
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+
 
 class MainActivity : AppCompatActivity() {
     var mqtt: MQTTClient = MQTTClient(this)
@@ -53,21 +54,6 @@ class MainActivity : AppCompatActivity() {
 
     // Used to bind all functions to the buttons of the devices menu
     fun bindFirstFragmentButtons(){
-        // OLD TESTS
-        /*findViewById<Button>(R.id.button).setOnClickListener {
-            //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-
-            // Here it has to be the message sending
-            // Using the mqttClient
-            val topic_text = findViewById<TextInputEditText>(R.id.topicText)
-            val topic = topic_text.text.toString()
-
-            val message_text = findViewById<TextInputEditText>(R.id.messageText)
-            val message = message_text.text.toString()
-
-            mqtt.publish(topic, message)
-        }*/
-
 
         // LAMP 1
         findViewById<RadioButton>(R.id.radioButtonOnLight1).setOnClickListener {
@@ -136,8 +122,30 @@ class MainActivity : AppCompatActivity() {
         }
 
         // BLIND SERVO MOTOR
+        findViewById<SeekBar>(R.id.seekBar).setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                mqtt.publish("BLIND", findViewById<SeekBar>(R.id.seekBar).progress.toString())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+            }
+        })
 
         // CEILING FAN DC MOTOR
+        /*findViewById<SeekBar>(R.id.seekBar2).setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            override fun onStopTrackingTouch(seekBar: SeekBar) {
+                mqtt.publish("FAN", findViewById<SeekBar>(R.id.seekBar2).progress.toString())
+            }
+
+            override fun onStartTrackingTouch(seekBar: SeekBar) {
+            }
+
+            override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+            }
+        })*/
 
     }
 
@@ -159,3 +167,4 @@ class MainActivity : AppCompatActivity() {
     }
 
 }
+

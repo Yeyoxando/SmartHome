@@ -14,7 +14,7 @@ SmartHomeController::SmartHomeController(){
     devices_[i] = 0;
   }
   
-  read_string_ = 0;
+  read_string_ = "";
   read_number_ = -1;
   
 }
@@ -56,8 +56,15 @@ void SmartHomeController::createDevices(){
   rgb_lamp->setBluePin(6);
   
   devices_[2] = rgb_lamp;
-  
-  
+
+
+  Blind* blind = new Blind();
+  blind->setDeviceID(3);
+  blind->setDigitalPin(7);
+  blind->initServo();
+
+  devices_[3] = blind;
+    
 }
 
 // ----------------------------------------------------- //
@@ -71,7 +78,7 @@ void SmartHomeController::readInput(){
     delay(2);
   }
   
-  if(read_string_ > 0){
+  if(read_string_ != ""){
     Serial.println(read_string_);  
     read_number_ = read_string_.toInt();
     Serial.println(read_number_);
@@ -111,5 +118,3 @@ void sendDeviceCurrentState(int device_id){
 }
 
 // ----------------------------------------------------- //
-
-
