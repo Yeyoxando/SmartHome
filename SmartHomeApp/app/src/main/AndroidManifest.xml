@@ -20,11 +20,13 @@
             </intent-filter>
         </activity>
 
+        <!-- Include Eclipse's MQTT Paho library service -->
         <service android:name="org.eclipse.paho.android.service.MqttService">
         </service>
 
     </application>
 
+    <!-- Added permissions to enable the use of MQTT connections -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

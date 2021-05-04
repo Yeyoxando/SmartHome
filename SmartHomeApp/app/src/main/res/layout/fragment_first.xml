@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".FirstFragment">
 
+    <!-- Title text -->
     <TextView
         android:id="@+id/TitleText"
         android:layout_width="match_parent"
@@ -20,6 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/linearLayout" />
 
+    <!-- Layout containing everything else  -->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -35,6 +37,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
+        <!-- Lamp 1 options  -->
         <LinearLayout
             android:id="@+id/Lamp1Layout"
             android:layout_width="match_parent"
@@ -61,6 +64,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <!-- Lamp 1 off -->
                 <RadioButton
                     android:id="@+id/radioButtonOffLight1"
                     android:layout_width="wrap_content"
@@ -70,6 +74,7 @@
                     android:paddingRight="10dp"
                     android:text="Off" />
 
+                <!-- Lamp 1 on -->
                 <RadioButton
                     android:id="@+id/radioButtonOnLight1"
                     android:layout_width="wrap_content"
@@ -81,6 +86,7 @@
             </RadioGroup>
         </LinearLayout>
 
+        <!-- Lamp 2 options -->
         <LinearLayout
             android:id="@+id/FlexoLampLayout"
             android:layout_width="match_parent"
@@ -107,6 +113,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <!-- Lamp 2 Off -->
                 <RadioButton
                     android:id="@+id/radioButtonOffLight2"
                     android:layout_width="wrap_content"
@@ -116,6 +123,7 @@
                     android:paddingRight="10dp"
                     android:text="Off" />
 
+                <!-- Lamp 2 On -->
                 <RadioButton
                     android:id="@+id/radioButtonOnLight2"
                     android:layout_width="wrap_content"
@@ -127,6 +135,7 @@
             </RadioGroup>
         </LinearLayout>
 
+        <!-- RGB Lamp options -->
         <LinearLayout
             android:id="@+id/RGBLampLayout"
             android:layout_width="match_parent"
@@ -145,6 +154,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- RGB radio group top -->
             <RadioGroup
                 android:id="@+id/radioGroupLight3Mid"
                 android:layout_width="match_parent"
@@ -153,6 +163,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <!-- RGB lamp red -->
                 <RadioButton
                     android:id="@+id/radioButtonRedLight3"
                     android:layout_width="110dp"
@@ -162,6 +173,7 @@
                     android:paddingRight="10dp"
                     android:text="Red" />
 
+                <!-- RGB lamp green -->
                 <RadioButton
                     android:id="@+id/radioButtonGreenLight3"
                     android:layout_width="110dp"
@@ -171,6 +183,7 @@
                     android:paddingRight="10dp"
                     android:text="Green" />
 
+                <!-- RGB lamp blue -->
                 <RadioButton
                     android:id="@+id/radioButtonBlueLight3"
                     android:layout_width="110dp"
@@ -182,6 +195,7 @@
 
             </RadioGroup>
 
+            <!-- RGB radio group mid -->
             <RadioGroup
                 android:id="@+id/radioGroupLight3Bottom"
                 android:layout_width="match_parent"
@@ -189,6 +203,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <!-- RGB lamp yellow -->
                 <RadioButton
                     android:id="@+id/radioButtonYellowLight3"
                     android:layout_width="110dp"
@@ -198,6 +213,7 @@
                     android:paddingRight="10dp"
                     android:text="Yellow" />
 
+                <!-- RGB lamp cyan -->
                 <RadioButton
                     android:id="@+id/radioButtonCyanLight3"
                     android:layout_width="110dp"
@@ -207,6 +223,7 @@
                     android:paddingRight="10dp"
                     android:text="Cyan" />
 
+                <!-- RGB lamp magenta -->
                 <RadioButton
                     android:id="@+id/radioButtonMagentaLight3"
                     android:layout_width="110dp"
@@ -218,6 +235,7 @@
 
             </RadioGroup>
 
+            <!-- RGB radio group bottom -->
             <RadioGroup
                 android:id="@+id/radioGroupLight3Top"
                 android:layout_width="match_parent"
@@ -226,6 +244,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
+                <!-- RGB lamp off -->
                 <RadioButton
                     android:id="@+id/radioButtonOffLight3"
                     android:layout_width="110dp"
@@ -236,6 +255,7 @@
                     android:paddingRight="10dp"
                     android:text="Off" />
 
+                <!-- RGB lamp white -->
                 <RadioButton
                     android:id="@+id/radioButtonWhiteLight3"
                     android:layout_width="110dp"
@@ -248,6 +268,7 @@
 
         </LinearLayout>
 
+        <!-- Window blind options -->
         <LinearLayout
             android:id="@+id/BlindLayout"
             android:layout_width="match_parent"
@@ -267,6 +288,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Blind option numbers above the seek bar -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -318,6 +340,7 @@
                     android:text="Open" />
             </LinearLayout>
 
+            <!-- Seek bar to select the blind opened percentage -->
             <SeekBar
                 android:id="@+id/seekBar"
                 android:layout_width="300dp"
@@ -328,6 +351,7 @@
 
         </LinearLayout>
 
+        <!-- Ceiling fan options -->
         <LinearLayout
             android:id="@+id/CeilingFanLayout"
             android:layout_width="match_parent"
@@ -347,6 +371,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <!-- Fan option numbers above the seek bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -377,6 +402,7 @@
 
             </LinearLayout>
 
+            <!-- Seek bar to select the ceiling fan speed -->
             <SeekBar
                 android:id="@+id/seekBar2"
                 android:layout_width="300dp"

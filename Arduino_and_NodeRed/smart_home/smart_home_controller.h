@@ -2,15 +2,16 @@
 // Date: 08/04/2021
 // e-mail: c0022981@my.shu.ac.uk
 
-/** @file smart_home_controller.h
- *  @brief
- *
- *  Details.
- *  \n
-*/
-
 #ifndef __SMART_HOME_CONTROLLER_H__
 #define __SMART_HOME_CONTROLLER_H__
+
+/** @file smart_home_controller.h
+ *  @brief OOP Representation of the Arduino smart home. 
+ *
+ *  Details. 
+ *  It contain all the implemented devices and read the input 
+ *  sent from the Raspberry MQTT broker. 
+*/
 
 // ----------------------------------------------------- //
 
@@ -19,32 +20,30 @@
 
 // ----------------------------------------------------- //
 
+/// @brief Arduino smart home. 
 class SmartHomeController{
  public:
   SmartHomeController();
   ~SmartHomeController();
   
-  /// @brief
+  /// @brief Creates all the electronic devices connections and their settings.
   void createDevices();
 
-  /// @brief  
+  /// @brief Read the input from through the Serial from the MQTT broker.
   void readInput();
-  /// @brief
+  /// @brief Send the readen data to the devices to change their state.
   void manageDevices();
   
-  /// @brief
-  void sendCurrentState();
-  /// @brief
-  void sendDeviceCurrentState(int device_id);
-  
  private:
-   /// @brief
-  Device* devices_[10];
-  /// @brief
+  /// @brief Stored devices installed on the house, store their variables and state.
+  Device* devices_[5];
+  /// @brief Readen string from the Serial port communication.
   String read_string_;
-  /// @brief
+  /// @brief Readen string transformed to an integer.
   int read_number_;
   
 };
+
+// ----------------------------------------------------- //
 
 #endif //__SMART_HOME_CONTROLLER_H__

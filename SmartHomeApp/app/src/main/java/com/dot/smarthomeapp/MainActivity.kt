@@ -10,8 +10,9 @@ import android.widget.SeekBar.OnSeekBarChangeListener
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
-
+///@ brief Set the connection with the MQTT broker an initialize the app menu.
 class MainActivity : AppCompatActivity() {
+    // Wrapper for the mqtt client (Data for the broker already set)
     var mqtt: MQTTClient = MQTTClient(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
 
 
-
+        // Set all the actions required for each button of the menu
         bindFirstFragmentButtons()
 
     }
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         mqtt.disconnect()
     }
 
-    // Used to bind all functions to the buttons of the devices menu
+    /// @brief Used to bind all functions of the buttons from the devices menu.
     fun bindFirstFragmentButtons(){
 
         // LAMP 1
@@ -74,7 +75,7 @@ class MainActivity : AppCompatActivity() {
         // RGB LED combinations
         findViewById<RadioButton>(R.id.radioButtonOffLight3).setOnClickListener {
             mqtt.publish("RGBLED", "0")
-            turnOffRGBMidRadioButtons()
+            turnOffRGBMidRadioButtons() // This is for the specific implementation of the multiple row radio group, it won't work either
             turnOffRGBBottomRadioButtons()
             findViewById<RadioButton>(R.id.radioButtonOffLight3).isChecked = true
         }
@@ -123,43 +124,52 @@ class MainActivity : AppCompatActivity() {
 
         // BLIND SERVO MOTOR
         findViewById<SeekBar>(R.id.seekBar).setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            // Send the value of the seek bar when it's released
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 mqtt.publish("BLIND", findViewById<SeekBar>(R.id.seekBar).progress.toString())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Empty
             }
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                // Empty
             }
         })
 
         // CEILING FAN DC MOTOR
-        /*findViewById<SeekBar>(R.id.seekBar2).setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+        findViewById<SeekBar>(R.id.seekBar2).setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+            // Send the value of the seek bar when it's released
             override fun onStopTrackingTouch(seekBar: SeekBar) {
                 mqtt.publish("FAN", findViewById<SeekBar>(R.id.seekBar2).progress.toString())
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar) {
+                // Empty
             }
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
+                // Empty
             }
-        })*/
+        })
 
     }
 
+    /// @brief Turn off the radio buttons from the top row
     fun turnOffRGBTopRadioButtons(){
         findViewById<RadioButton>(R.id.radioButtonOffLight3).isChecked = false
         findViewById<RadioButton>(R.id.radioButtonWhiteLight3).isChecked = false
     }
 
+    /// @brief Turn off the radio buttons from the mid row
     fun turnOffRGBMidRadioButtons(){
         findViewById<RadioButton>(R.id.radioButtonRedLight3).isChecked = false
         findViewById<RadioButton>(R.id.radioButtonGreenLight3).isChecked = false
         findViewById<RadioButton>(R.id.radioButtonBlueLight3).isChecked = false
     }
 
+    /// @brief Turn off the radio buttons from the bottom row
     fun turnOffRGBBottomRadioButtons(){
         findViewById<RadioButton>(R.id.radioButtonYellowLight3).isChecked = false
         findViewById<RadioButton>(R.id.radioButtonCyanLight3).isChecked = false

@@ -7,14 +7,15 @@ import org.eclipse.paho.android.service.MqttAndroidClient
 import org.eclipse.paho.client.mqttv3.*
 
 // Paho Mqtt client wrapper
-/* Implements basic functions for the mqtt client.
+/* @brief Implements basic functions for the mqtt client.
  * Overrides paho interface functions to implement what happens on each of them
  */
 class MQTTClient(context: Context?) {
-    private var serverURI = "tcp://192.168.1.37"
+    private var serverURI = "tcp://192.168.1.37" // Local server on the raspberry PI
     private var clientID = ""
-    private var mqttClient = MqttAndroidClient(context, serverURI, clientID)
+    private var mqttClient = MqttAndroidClient(context, serverURI, clientID) // Creates a Mqtt client with the given data
 
+    /// @brief Connects the Mqtt client to the broker checking for connection problems.
     fun connect(){
         mqttClient.setCallback(object : MqttCallback{
             override fun messageArrived(topic: String?, message: MqttMessage?){
@@ -48,6 +49,7 @@ class MQTTClient(context: Context?) {
 
     }
 
+    /// @brief Subcribes the Mqtt client to a topic.
     fun subscribe(topic: String, qos: Int = 1) {
         try {
             mqttClient.subscribe(topic, qos, null, object : IMqttActionListener {
@@ -64,6 +66,7 @@ class MQTTClient(context: Context?) {
         }
     }
 
+    /// @brief Unsubcribes the Mqtt client from a topic.
     fun unsubscribe(topic: String) {
         try {
             mqttClient.unsubscribe(topic, null, object : IMqttActionListener {
@@ -80,6 +83,7 @@ class MQTTClient(context: Context?) {
         }
     }
 
+    /// @brief Publish a message in an specific MQTT topic.
     fun publish(topic: String, msg: String, qos: Int = 1, retained: Boolean = false) {
         try {
             val message = MqttMessage()
@@ -100,6 +104,7 @@ class MQTTClient(context: Context?) {
         }
     }
 
+    /// @brief Disconnects the MQTT client from the broker.
     fun disconnect() {
         try {
             mqttClient.disconnect(null, object : IMqttActionListener {

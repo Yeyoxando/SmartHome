@@ -174,7 +174,10 @@ int Blind::getCurrentState(){
 }
 
 void Blind::setCurrentState(int new_state){
+  
   current_state_ = (BlindState)new_state;
+
+  // 90 degrees / 6 steps = 18 degrees by step
   
   switch(new_state){
     case kBlindState_Closed:{
@@ -182,15 +185,15 @@ void Blind::setCurrentState(int new_state){
       break;
     }
     case kBlindState_20Percent:{
-      angle_ = 72;     
+      angle_ = 72;   // 90 - 18  
       break;
     }
     case kBlindState_40Percent:{ 
-      angle_ = 54;   
+      angle_ = 54;   // 72 - 18
       break;
     }
     case kBlindState_60Percent:{
-      angle_ = 36;          
+      angle_ = 36;   // ...    
       break;
     }
     case kBlindState_80Percent:{ 
@@ -230,6 +233,32 @@ int CeilingFan::getCurrentState(){
 }
 
 void CeilingFan::setCurrentState(int new_state){
+  
+  current_state_ = (CeilingFanState)new_state;
+  analogWrite(digital_pin_, 0);
+  
+}
+
+void CeilingFan::tick(){
+
+  switch(current_state_){
+    case kCeilingFanState_Off:{
+      break;
+    }
+    case kCeilingFanState_MidSpeed:{
+      analogWrite(digital_pin_, 20);
+      delay(30);
+      break;
+    }
+    case kCeilingFanState_FullSpeed:{ 
+      analogWrite(digital_pin_, 40);
+      delay(30);
+      break;
+    }
+    default:{
+      break;
+    }
+  }
 
 }
    
